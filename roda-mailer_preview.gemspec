@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "tilt", "~> 2.0"
   spec.add_development_dependency "mail", "~> 2.6"
   spec.add_development_dependency "rubygems-tasks", "~> 0.2"
+  spec.add_development_dependency "rack-test", "~> 0.6"
 end
