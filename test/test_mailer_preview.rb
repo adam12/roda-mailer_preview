@@ -21,7 +21,6 @@ class TestMailerPreview < Minitest::Test
 
         r.on "mail_view" do
           r.is "test" do
-            # Generate mail
             mail = self.class.mail("/test")
             preview(mail)
           end

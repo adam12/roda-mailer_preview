@@ -1,5 +1,10 @@
 # Roda Mailer Preview
 
+Easily preview your emails inside your application under a customizable route.
+
+If you've ever used the `mail_view` gem for Rails, or in recent Rails versions,
+the ability to preview an email, this is very similar to that.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -18,7 +23,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Fill me in.
+Aside from configuring the Roda mailer plugin as you normally would, routes to preview the emails
+is required, ensuring that the `preview` or `preview_index` methods are called with an instance of
+a `Mail` object.
+
+```ruby
+class App < Roda
+  plugin :mailer_preview
+
+  route do |r|
+    r.on "mail_view" do
+      # Preview /the-mailer at /mail_view/test
+      r.is "test" do
+        mail = YourMailer.mail("/the-mailer")
+        preview(mail)
+      end
+
+      # Provides an index of all previewable-mailers at /mail_view
+      r.is true do
+        mailers = ["/test"]
+        preview_index(mailers)
+      end
+    end
+  end
+end
+```
 
 ## Contributing
 
@@ -34,3 +63,7 @@ before attempting a pull request.
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## Credits
+
+I was shamelessly inspired by the CSS of the MailView gem.
