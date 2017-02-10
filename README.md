@@ -49,6 +49,11 @@ class App < Roda
 end
 ```
 
+## Gotchas
+
+This library doesn't currently support HTML views. I'd likely accept a pull request if you wanted to
+submit one.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/adam12/roda-mailer_preview.
