@@ -4,9 +4,12 @@ Gem::Specification.new do |spec|
   spec.authors        = ["Adam Daniels"]
   spec.email          = "adam@mediadrive.ca"
 
-  spec.summary        = %q()
+  spec.summary        = %q(Preview your Roda mailer plugin emails)
   spec.description    = <<-EOM
+  Easily preview your emails inside your application under a customizable route.
 
+  If you've ever used the mail_view gem for Rails, or in recent Rails versions,
+  the ability to preview an email, this is very similar to that.
   EOM
 
   spec.homepage       = "https://github.com/adam12/roda-mailer_preview"
