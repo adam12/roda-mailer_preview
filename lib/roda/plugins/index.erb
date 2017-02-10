@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <ul>
+    <% urls.each do |url| %>
+    <li><a href="<%= path %><%= url %>"><%= url %></a></li>
+    <% end %>
+  </ul>
+</body>
+</html>
