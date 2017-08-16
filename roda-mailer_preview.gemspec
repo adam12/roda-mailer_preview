@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.files          = ["README.md", "Rakefile"] + Dir["lib/**/*.{rb,erb}"]
   spec.require_paths  = ["lib"]
 
-  spec.add_dependency "roda", "~> 2.0"
+  spec.add_dependency "roda", ">= 2.0", "< 5.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "tilt", "~> 2.0"
