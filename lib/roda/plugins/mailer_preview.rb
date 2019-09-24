@@ -57,7 +57,7 @@ class Roda
         #     preview_index(available_previews)
         #   end
         def preview_index(urls, path: request.path)
-          render(path: __dir__ + "/index.erb", locals: { urls: urls, path: path })
+          render(path: __dir__ + "/index.erb", locals: { urls: Array(urls), path: path })
         end
       end
 
