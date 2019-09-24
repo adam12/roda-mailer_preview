@@ -40,15 +40,30 @@
     <dt><%= header.name %>:</dt>
     <dd><%= header.to_s %></dd>
   <% end %>
+    <dt>Format</dt>
+    <dd>
+      <select name="content-type">
+        <% if mail.parts.any? { |part| part.content_type == "text/plain" } %>
+        <option value="text/plain">Plain</option>
+        <% end %>
+
+        <% if mail.parts.any? { |part| part.content_type == "text/html" } %>
+        <option value="text/html">HTML</option>
+        <% end %>
+      </select>
+    </dd>
   </dl>
 </header>
+<iframe class="body"></iframe>
+<script>
+const select = document.querySelector('select[name="content-type"]')
+const iframe = document.querySelector('iframe.body')
 
-<div class="body">
-  <% if mail.content_type =~ /plain/ %>
-    <pre class="plain"><%= mail.body %></div>
-  <% else %>
-    <%= mail.body %>
-  <% end %>
-</div>
+select.addEventListener('change', (e) => {
+  let contentType = e.currentTarget.value
+
+  iframe.src = `${window.location.pathname}?content-type=${contentType}`
+}, false)
+</script>
 </body>
 </html>

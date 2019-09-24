@@ -41,6 +41,14 @@ class Roda
         #     end
         #   end
         def preview(mail)
+          if request.params["content-type"]
+            part = mail.parts.find { |part|
+              part.content_type == request.params["content-type"]
+            }
+
+            request.halt [200, {}, [part.body.to_s]]
+          end
+
           acceptable_headers = %w(Date From To Subject)
 
           headers = mail.header_fields.select do |field|
