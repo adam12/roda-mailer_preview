@@ -4,14 +4,14 @@ require "roda"
 
 class Roda
   module RodaPlugins
-    # The mailer_preview plugin provides an HTML representation of the email
+    # The +mailer_preview+ plugin provides an HTML representation of the email
     # without requiring it to be delivered through SMTP.
     #
     #   plugin :mailer_preview
     #
     # = Preview email
     #
-    # To preview an email, create a route which finishes by calling +preview+
+    # To preview an email, create a route which finishes by calling {InstanceMethods#preview}
     # with an instance of a Mail object.
     #
     #   r.on "previews" do
@@ -24,7 +24,7 @@ class Roda
     # = Preview index
     #
     # For a single point of entry to all your mail previews, provide an array
-    # of paths to +preview_index+
+    # of paths to {InstanceMethods#preview_index}
     #
     #   r.is "previews" do
     #     available_previews = ["/previews/signup-email"]
@@ -32,8 +32,9 @@ class Roda
     #   end
     module MailerPreview
       module InstanceMethods
-        # Pass an instance of +Mail+ to render a preview
+        # Pass an instance of +Mail::Message+ to render a preview
         #
+        # @example
         #   r.on "previews" do
         #     r.is "signup-email" do
         #       mail = YourMailer.mail("/signup-email")
@@ -52,6 +53,7 @@ class Roda
 
         # Pass an array of paths to render an index of available previews
         #
+        # @example
         #   r.is "previews" do
         #     available_previews = ["/previews/signup-email"]
         #     preview_index(available_previews)
@@ -61,7 +63,8 @@ class Roda
         end
       end
 
-      def self.load_dependencies(app, opts = {}) # :nodoc:
+      # @api private
+      def self.load_dependencies(app, opts = {})
         app.plugin :render
       end
     end
